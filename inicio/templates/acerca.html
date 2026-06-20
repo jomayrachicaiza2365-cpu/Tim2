@@ -1,0 +1,341 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <!-- Meta -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <meta name="description" content="Colegio Patria - Latacunga, Cotopaxi">
+        <meta name="keywords" content="colegio patria, latacunga, educacion, cotopaxi, matriculas, colegio">       
+        
+        <!-- SITE TITLE -->
+        <title>Colegio Patria - Acerca de Nosotros</title>          
+        
+        <!-- Latest Bootstrap min CSS -->
+        <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">       
+        <!-- Google Font -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800"> 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600">          
+        <!-- Font Awesome CSS -->
+        <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/fonts/themify-icons.css' %}">
+        <!--- owl carousel Css-->
+        <link rel="stylesheet" href="{% static 'assets/owlcarousel/css/owl.carousel.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/owlcarousel/css/owl.theme.css' %}">
+        <!--materialdesignicons Css-->
+        <link rel="stylesheet" href="{% static 'assets/css/fonts.css' %}">     
+        <!-- animate CSS -->
+        <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">              
+        <!-- MAGNIFIC CSS -->
+        <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">                    
+        <!-- Style CSS -->                      
+        <link rel="stylesheet" href="{% static 'assets/css/menu.css' %}">          
+        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">         
+        <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">            
+        
+      
+    </head>
+    
+    <body data-spy="scroll" data-offset="80">
+
+        <!-- START PRELOADER -->
+        <div class="preloader">
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+        </div>
+        <!-- END PRELOADER -->      
+
+         <!-- START NAVBAR -->
+        <div class="site-mobile-menu site-navbar-target">
+          <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+              <span class="icon-close2 js-menu-toggle"></span>
+            </div>
+          </div>
+          <div class="site-mobile-menu-body"></div>
+        </div>
+       
+        <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+          <div class="container">
+            <div class="row align-items-center">       
+              <div class="col-6 col-xl-2">
+                <h1 class="mb-0 site-logo"><a href="/"><img src="{% static 'assets/img/logoP.png' %}" alt="Logo"></a></h1>
+              </div>
+              <div class="col-12 col-md-10 d-none d-xl-block">
+                <nav class="site-navigation position-relative text-right" role="navigation">
+                  <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                    <li><a href="/" class="nav-link">Inicio</a></li>
+                    <li><a href="{% url 'login' %}" class="nav-link">Login</a></li>
+                    <li><a href="{% url 'acerca' %}" class="nav-link">Acerca de nosotros</a></li>
+                    <li><a href="{% url 'contacto' %}" class="nav-link">Contactos</a></li>
+                  </ul>
+                </nav>
+              </div>
+               <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;">
+               <a href="#" class="site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3"></span></a>
+               </div>
+            </div>
+          </div>
+        </header>
+        <!-- END NAVBAR-->                           
+        
+        <!-- START SECTION TOP -->
+        <section class="section-top" style="background-image: url({% static 'assets/img/bg/section-top.png' %}); background-size:cover; background-position: center center;">
+            <div class="container">
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12 col-xs-12 text-center">
+                    <div class="section-top-title">
+                        <h1>Nuestra Institución</h1>     
+                    </div>
+                  </div>                  
+                </div>
+            </div>
+        </section>
+        <!-- END SECTION TOP -->
+        
+        <!-- START CASE STUDY TOP CONTENT -->
+        <section class="case_content_top_area section-padding">
+            <div class="container">         
+                <div class="row">
+                  <div class="col-lg-6 col-sm-12 col-xs-12">
+                    <div class="case_content_top">
+                        <h2>Una trayectoria de excelencia educativa orientada al futuro</h2>
+                        <p>El Colegio Patria de Latacunga es una institución comprometida con el desarrollo integral de la juventud de Cotopaxi. Nuestra propuesta académica combina el rigor científico, el fomento tecnológico y una sólida base en valores éticos y morales para preparar líderes capaces de transformar su entorno.</p>
+                        <p>Contamos con un equipo de docentes altamente calificados e instalaciones equipadas que garantizan un aprendizaje significativo para enfrentar de manera óptima los retos universitarios y profesionales.</p>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-sm-12 col-xs-12">
+                    <div class="case_content_top_img">
+                        <img src="{% static 'assets/img/COMIL.png' %}" class="img-fluid" alt="Colegio Patria Instalaciones" />
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </section>
+        <!-- END CASE STUDY TOP CONTENT -->
+        
+        <!-- START CASE STUDY -->
+        <section class="case_content_area section-padding">
+            <div class="container">
+                <div class="section-title text-center">
+                    <h2>Pilares Estratégicos Institucionales</h2>
+                    <p>Conoce los cimientos sobre los cuales construimos la educación de nuestra comunidad estudiantil latacungueña.</p>
+                </div>              
+                <div class="row">
+                    <div class="col-lg-10 offset-lg-1 col-sm-12 col-xs-12">
+                        <div class="row">
+                          <div class="col-lg-6 col-sm-12 col-xs-12">
+                            <div class="case_content">
+                                <h2>Nuestra Misión</h2>
+                                <p>Ofrecer una formación integral de alta calidad, promoviendo el pensamiento crítico, la investigación y la vivencia de valores humanos. Buscamos potenciar las habilidades individuales de nuestros estudiantes en Latacunga para convertirlos en actores positivos dentro de la sociedad.</p>
+                            </div>
+                          </div>
+                          <div class="col-lg-6 col-sm-12 col-xs-12">
+                            <div class="case_content">
+                                <h2>Nuestra Visión</h2>
+                                <p>Consolidarnos como la unidad educativa referente en la provincia de Cotopaxi por nuestra innovación pedagógica, excelencia académica y el uso eficiente de herramientas tecnológicas, formando bachilleres altamente competitivos a nivel nacional.</p>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+		<!-- END CASE STUDY -->
+<!-- TESTIMONIALS -->
+        <div class="testimonial_area section-padding">
+            <div class="container">
+                <div class="section-title text-center">
+                    <h2>Testimonios de nuestra Comunidad</h2>
+                    <p>La experiencia y confianza de nuestros estudiantes y padres de familia respaldan nuestra labor educativa en Cotopaxi.</p>
+                </div>              
+                <div class="row">                   
+                    <div class="col-lg-10 offset-lg-1 col-sm-12 col-xs-12">
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
+                                <div class="single_testimonial">
+                                    <div class="testimonial_img">
+                                        <img src="{% static 'assets/img/testimonial/1.jpg' %}" alt="Padre de familia" />
+                                    </div>
+                                    <p>"Excelente nivel académico. Mis hijos se han formado con valores firmes y una preparación que les abrió las puertas directamente a la universidad."</p>
+                                    <h4>Carlos Andrade</h4>
+                                    <h5>Padre de Familia</h5>
+                                </div>
+                            </div><!-- END COL  -->     
+                            <div class="col-lg-6 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
+                                <div class="single_testimonial">
+                                    <div class="testimonial_img">
+                                        <img src="{% static 'assets/img/testimonial/2.jpg' %}" alt="Exalumna" />
+                                    </div>
+                                    <p>"Llevar el nombre del Colegio Patria es un orgullo. Las herramientas tecnológicas y el apoyo de los docentes me dieron la confianza para liderar mi propia carrera."</p>
+                                    <h4>María José Tulcanaza</h4>
+                                    <h5>Graduada - Promoción 2023</h5>
+                                </div>
+                            </div><!-- END COL  -->     
+                            <div class="col-lg-6 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
+                                <div class="single_testimonial">
+                                    <div class="testimonial_img">
+                                        <img src="{% static 'assets/img/testimonial/3.jpg' %}" alt="Estudiante" />
+                                    </div>
+                                    <p>"Me encanta el ambiente de respeto y los proyectos de innovación que realizamos en clase. Aquí realmente te motivan a superarte cada día."</p>
+                                    <h4>Kevin Santamaría</h4>
+                                    <h5>Estudiante de Bachillerato</h5>
+                                </div>
+                            </div><!-- END COL  -->     
+                            <div class="col-lg-6 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s" data-wow-offset="0">
+                                <div class="single_testimonial">
+                                    <div class="testimonial_img">
+                                        <img src="{% static 'assets/img/testimonial/4.jpg' %}" alt="Madre de familia" />
+                                    </div>
+                                    <p>"La atención de las autoridades en Latacunga y la constante comunicación por las plataformas virtuales hacen que uno como padre se sienta seguro."</p>
+                                    <h4>Lucía Altamirano</h4>
+                                    <h5>Presidenta del Comité de Padres</h5>
+                                </div>
+                            </div><!-- END COL  -->                                             
+                        </div>
+                    </div>
+                </div><!-- END ROW -->              
+            </div><!--- END CONTAINER -->
+        </div>
+        <!-- END TESTIMONIALS -->       
+        
+        <!-- CONTACT -->
+        <div id="contact" class="contact_area section-padding">
+            <div class="container">
+                <div class="section-title text-center">
+                    <h2 class="section-title-white">¿Tienes alguna duda?</h2>
+                    <p class="section-title-white">Escríbenos directamente y nuestro equipo del Colegio Patria te responderá a la brevedad posible.</p>
+                </div>              
+                <div class="row">                   
+                    <div class="offset-lg-1 col-lg-10 col-sm-12 col-xs-12 text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
+                        <div class="contact">
+                            <form class="form" name="enq" method="post" action="">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <input type="text" name="name" class="form-control" placeholder="Nombre completo" required="required">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <input type="email" name="email" class="form-control" placeholder="Correo electrónico" required="required">
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <input type="text" name="subject" class="form-control" placeholder="Asunto (Ej: Admisiones, Cupos)" required="required">
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <textarea rows="6" name="message" class="form-control" placeholder="Escribe tu mensaje o consulta aquí..." required="required"></textarea>
+                                    </div>
+                                    <div class="col-md-12 text-center">
+                                        <button type="submit" class="contact_btn" title="Enviar Mensaje">Enviar Mensaje</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div><!-- END COL  -->                 
+                </div><!-- END ROW -->              
+            </div><!--- END CONTAINER -->
+        </div>
+        <!-- END CONTACT -->        
+        
+        <!-- START FOOTER -->
+        <div class="footer" style="background-image: url({% static 'assets/img/bg/footer.png' %}); background-size:cover;">
+            <div class="container">     
+                <div class="row footer_bg">                     
+                    <div class="col-lg-3 col-sm-6 col-xs-12">
+                        <div class="footer_logo">
+                            <img src="{% static 'assets/img/logoP.png' %}" alt="Logo Colegio Patria" />
+                            <p>Colegio Patria - Latacunga: Formando ciudadanos con valores, excelencia académica y visión de futuro para liderar el cambio social en Cotopaxi.</p>
+                        </div>
+                        <div class="social_profile">
+                            <ul>
+                                <li><a href="#" class="f_facebook"><i class="fa fa-facebook" title="Facebook"></i></a></li>
+                                <li><a href="#" class="f_twitter"><i class="fa fa-instagram" title="Twitter"></i></a></li>
+                                <li><a href="#" class="f_instagram"><i class="fa fa-instagram" title="Instagram"></i></a></li>
+                                <li><a href="#" class="f_linkedin"><i class="fa fa-linkedin" title="LinkedIn"></i></a></li>
+                            </ul>
+                        </div>                          
+                    </div><!--- END COL -->                     
+                    <div class="col-lg-3 col-sm-6 col-xs-12">
+                        <div class="single_footer">
+                            <h4>Preguntas Frecuentes</h4>
+                            <ul>
+                                <li><a href="#">Proceso de Admisión 2026</a></li>
+                                <li><a href="#">Requisitos de Matrícula</a></li>
+                                <li><a href="#">Calendario Escolar Sierra</a></li>
+                                <li><a href="#">Plataforma Virtual Educar</a></li>
+                                <li><a href="#">Código de Convivencia</a></li>
+                            </ul>
+                        </div>
+                    </div><!--- END COL --> 
+                    <div class="col-lg-3 col-sm-6 col-xs-12">
+                        <div class="single_footer">
+                            <h4>Institución</h4>
+                            <ul>
+                                <li><a href="{% url 'acerca' %}">Nuestra Historia</a></li>
+                                <li><a href="#">Oferta Académica</a></li>
+                                <li><a href="#">Bolsa de Empleo Docente</a></li>
+                                <li><a href="#">Convenios Universitarios</a></li>
+                                <li><a href="#">Instalaciones en Latacunga</a></li>                       
+                            </ul>
+                        </div>
+                    </div><!--- END COL -->
+                    <div class="col-lg-3 col-sm-6 col-xs-12">
+                        <div class="newsletter-form">
+                            <h4>Suscríbete a Boletines</h4>
+                             <form id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate">
+                                <div class="input-group input-group-lg newsletter">
+                                    <input type="email" name="EMAIL" class="subscribe__input" placeholder="Tu Correo Electrónico">
+                                    <button type="submit" class="subs_btn">Unirse</button>
+                                </div>
+                                <div id="mce-responses">
+                                    <div class="response" id="mce-error-response" style="display:none"></div>
+                                    <div class="response" id="mce-success-response" style="display:none"></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div><!--- END COL -->     
+                </div><!--- END ROW -->     
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="footer_copyright">
+                            <p>&copy; 2026 Colegio Patria - Latacunga. Todos los Derechos Reservados.</p>
+                        </div>
+                    </div>
+                </div>              
+            </div><!--- END CONTAINER -->
+        </div>
+        <!-- END FOOTER --> 
+
+        <!-- Latest jQuery -->
+        <script src="{% static 'assets/js/jquery-1.12.4.min.js' %}"></script>
+        <!-- Latest compiled and minified Bootstrap -->
+        <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+        <!-- modernizer JS -->      
+        <script src="{% static 'assets/js/modernizr-2.8.3.min.js' %}"></script>                                                                                                                 
+        <!-- owl-carousel min js  -->
+        <script src="{% static 'assets/owlcarousel/js/owl.carousel.min.js' %}"></script>                   
+        <!-- magnific-popup js -->               
+        <script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>          
+        <!-- jquery mixitup js -->   
+        <script src="{% static 'assets/js/jquery.mixitup.js' %}"></script>         
+        <!-- jquery appear js -->
+        <script src="{% static 'assets/js/jquery.appear.js' %}"></script>                                                 
+        <!-- countTo js -->
+        <script src="{% static 'assets/js/jquery.inview.min.js' %}"></script>  
+        <!-- stellar js -->
+        <script src="{% static 'assets/js/jquery.stellar.min.js' %}"></script>         
+        <!-- WOW - Reveal Animations When You Scroll -->
+        <script src="{% static 'assets/js/wow.min.js' %}"></script>    
+        <!-- Menu js -->
+        <script src="{% static 'assets/js/menu.js' %}"></script>                                                                                                                                   
+        <script src="{% static 'assets/js/jquery.sticky.js' %}"></script>          
+        <!-- scrolltopcontrol js -->            
+        <script src="{% static 'assets/js/scrolltopcontrol.js' %}"></script>                                                                                                                                              
+        <!-- scripts js -->
+        <script src="{% static 'assets/js/scripts.js' %}"></script>        
+    </body>
+</html>

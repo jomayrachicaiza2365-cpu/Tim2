@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>U.E.F. Colegio Militar N° 13 "Patria" - Iniciar Sesión</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700">
+    <style>
+        body { 
+            background: #11141a; /* Fondo oscuro elegante que hace resaltar el amarillo */
+            font-family: 'Poppins', sans-serif;
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            height: 100vh; 
+            margin: 0;
+        }
+        .login-card { 
+            background: #ffffff; 
+            padding: 40px 30px; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); 
+            width: 100%; 
+            max-width: 420px; 
+            border-top: 5px solid #ffb400; /* Línea superior amarilla distintiva */
+        }
+        .institution-logo {
+            max-width: 90px;
+            margin-bottom: 15px;
+        }
+        .login-card h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .login-card p {
+            font-size: 13px;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+        .form-label {
+            font-size: 13px;
+            font-weight: 500;
+            color: #34495e;
+        }
+        .form-control {
+            border-radius: 6px;
+            padding: 10px 12px;
+            border: 1px solid #dcdde1;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        .form-control:focus {
+            border-color: #ffb400;
+            box-shadow: 0 0 0 3px rgba(255, 180, 0, 0.15);
+        }
+        .btn-custom { 
+            background-color: #ffb400; 
+            color: #11141a; 
+            font-weight: 600;
+            border: none; 
+            border-radius: 6px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+        .btn-custom:hover { 
+            background-color: #e09e00; 
+            color: #11141a; 
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(224, 158, 0, 0.2);
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #ffb400;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            color: #e09e00;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-card text-center">
+        <!-- Logo Institucional -->
+        <img src="{% static 'assets/img/logoP.png' %}" alt="Logo Colegio Patria" class="institution-logo">
+        
+        <h2>Iniciar Sesión</h2>
+        <p>Plataforma Académica Institucional</p>
+        
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-3 text-start">
+                <label class="form-label">Usuario / Identificación</label>
+                <input type="text" name="username" class="form-control" placeholder="Ingrese su usuario" required>
+            </div>
+            <div class="mb-4 text-start">
+                <label class="form-label">Contraseña</label>
+                <input type="password" name="password" class="form-control" placeholder="••••••••" required>
+            </div>
+            <button type="submit" class="btn btn-custom w-100 py-2.5">Ingresar al Sistema</button>
+        </form>
+        
+        <a href="/" class="back-link">← Volver al Inicio</a>
+    </div>
+</body>
+</html>
