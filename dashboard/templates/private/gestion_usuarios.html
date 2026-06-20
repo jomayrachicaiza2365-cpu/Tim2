@@ -1,0 +1,293 @@
+{% load static %}
+{% include 'private/header.html' %}
+
+<div class="container-fluid page-body-wrapper">
+  <!-- Theme settings -->
+  <div id="theme-settings" class="settings-panel">
+    <i class="settings-close mdi mdi-close"></i>
+    <p class="settings-heading">SIDEBAR SKINS</p>
+    <div class="sidebar-bg-options selected" id="sidebar-default-theme">
+      <div class="img-ss rounded-circle bg-light border mr-3"></div> Default
+    </div>
+    <div class="sidebar-bg-options" id="sidebar-dark-theme">
+      <div class="img-ss rounded-circle bg-dark border mr-3"></div> Dark
+    </div>
+    <p class="settings-heading mt-2">HEADER SKINS</p>
+    <div class="color-tiles mx-0 px-4">
+      <div class="tiles light"></div>
+      <div class="tiles dark"></div>
+    </div>
+  </div>
+
+  <!-- Top Navbar -->
+  <nav class="navbar col-lg-12 col-12 p-lg-0 fixed-top d-flex flex-row">
+    <div class="navbar-menu-wrapper d-flex align-items-stretch justify-content-between">
+      <a class="navbar-brand brand-logo-mini align-self-center d-lg-none" href="#"><img src="{% static 'template/assets/images/logo-mini.svg' %}" alt="logo" /></a>
+      <button class="navbar-toggler navbar-toggler align-self-center mr-2" type="button" data-toggle="minimize">
+        <i class="mdi mdi-menu"></i>
+      </button>
+      <ul class="navbar-nav">
+        <li class="nav-item d-none d-md-flex">
+          <span class="font-weight-semibold">Módulo de Administración Académica</span>
+        </li>
+      </ul>
+      <ul class="navbar-nav navbar-nav-right ml-lg-auto">
+        <li class="nav-item nav-profile dropdown border-0">
+          <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown">
+            <img class="nav-profile-img mr-2" alt="" src="{% static 'template/assets/images/faces/face1.jpg' %}" />
+            <span class="profile-name">{% if request.user.is_authenticated %}{{ request.user.username }}{% else %}Henry Klein{% endif %}</span>
+          </a>
+          <div class="dropdown-menu navbar-dropdown w-100" aria-labelledby="profileDropdown">
+            <a class="dropdown-item" href="/">
+              <i class="mdi mdi-logout mr-2 text-primary"></i> Salir del Sistema </a>
+          </div>
+        </li>
+      </ul>
+      <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+        <span class="mdi mdi-menu"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Panel -->
+  <div class="main-panel">
+    <div class="content-wrapper pb-0">
+      
+      <!-- Page Header -->
+      <div class="page-header flex-wrap">
+        <h3 class="mb-0"> Gestión de Usuarios <span class="pl-0 h6 pl-sm-2 text-muted d-inline-block">Administración de accesos a la plataforma académica.</span></h3>
+        <div class="d-flex">
+          <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#crearUsuarioModal">
+            <i class="mdi mdi-plus-circle-outline mr-1"></i> Agregar Usuario
+          </button>
+        </div>
+      </div>
+
+      <!-- Messages Alert -->
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{% if message.tags == 'error' %}danger{% elif message.tags == 'success' %}success{% else %}info{% endif %} alert-dismissible fade show shadow-sm" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      <!-- Users List Card -->
+      <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Usuarios en la Base de Datos</h4>
+              <p class="card-description">Total de cuentas de usuario registradas</p>
+              
+              <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                  <thead class="bg-light">
+                    <tr>
+                      <th>ID</th>
+                      <th>Usuario</th>
+                      <th>Nombre Completo</th>
+                      <th>Correo Electrónico</th>
+                      <th>Rol</th>
+                      <th>Estado</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for u in usuarios %}
+                      <tr>
+                        <td>{{ u.id }}</td>
+                        <td><strong>{{ u.username }}</strong></td>
+                        <td>{{ u.first_name }} {{ u.last_name }}</td>
+                        <td>{{ u.email }}</td>
+                        <td>
+                          {% if u.is_staff %}
+                            <span class="badge badge-warning text-dark"><i class="mdi mdi-shield-outline mr-1"></i>Admin (Staff)</span>
+                          {% else %}
+                            <span class="badge badge-info"><i class="mdi mdi-account-outline mr-1"></i>Regular</span>
+                          {% endif %}
+                        </td>
+                        <td>
+                          {% if u.is_active %}
+                            <span class="badge badge-success">Activo</span>
+                          {% else %}
+                            <span class="badge badge-danger">Inactivo</span>
+                          {% endif %}
+                        </td>
+                        <td>
+                          <!-- Actions buttons -->
+                          <button class="btn btn-xs btn-primary py-1.5 px-3" data-toggle="modal" data-target="#editarUsuarioModal{{ u.id }}">
+                            <i class="mdi mdi-pencil mr-1"></i> Editar
+                          </button>
+                          
+                          {% if u.id != request.user.id %}
+                            <button class="btn btn-xs btn-danger py-1.5 px-3 ml-1" data-toggle="modal" data-target="#eliminarUsuarioModal{{ u.id }}">
+                              <i class="mdi mdi-delete-outline mr-1"></i> Borrar
+                            </button>
+                          {% else %}
+                            <button class="btn btn-xs btn-secondary py-1.5 px-3 ml-1" disabled title="No puedes borrarte a ti mismo">
+                              <i class="mdi mdi-delete-outline mr-1"></i> Borrar
+                            </button>
+                          {% endif %}
+                        </td>
+                      </tr>
+
+                      <!-- EDIT MODAL FOR THIS USER -->
+                      <div class="modal fade" id="editarUsuarioModal{{ u.id }}" tabindex="-1" role="dialog" aria-labelledby="editarModalLabel{{ u.id }}" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header bg-primary text-white">
+                              <h5 class="modal-title" id="editarModalLabel{{ u.id }}">Editar Usuario: {{ u.username }}</h5>
+                              <button type="button" class="close text-white" data-dismiss="modal" aria-label="Cerrar">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <form action="{% url 'usuarios:editar_usuario' u.id %}" method="POST">
+                              {% csrf_token %}
+                              <div class="modal-body">
+                                <div class="form-group">
+                                  <label class="font-weight-bold">Nombre de Usuario</label>
+                                  <input type="text" name="username" class="form-control" value="{{ u.username }}" required>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-6 form-group">
+                                    <label class="font-weight-bold">Nombres</label>
+                                    <input type="text" name="first_name" class="form-control" value="{{ u.first_name }}">
+                                  </div>
+                                  <div class="col-md-6 form-group">
+                                    <label class="font-weight-bold">Apellidos</label>
+                                    <input type="text" name="last_name" class="form-control" value="{{ u.last_name }}">
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <label class="font-weight-bold">Correo Electrónico</label>
+                                  <input type="email" name="email" class="form-control" value="{{ u.email }}">
+                                </div>
+                                <div class="form-group">
+                                  <label class="font-weight-bold">Nueva Contraseña <small class="text-muted">(Dejar en blanco para no cambiar)</small></label>
+                                  <input type="password" name="password" class="form-control" placeholder="••••••••">
+                                </div>
+                                <div class="form-group row ml-1 mt-3">
+                                  <div class="form-check mr-4">
+                                    <label class="form-check-label">
+                                      <input type="checkbox" name="is_staff" class="form-check-input" {% if u.is_staff %}checked{% endif %}> Administrador (Staff) <i class="input-helper"></i>
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <label class="form-check-label">
+                                      <input type="checkbox" name="is_active" class="form-check-input" {% if u.is_active %}checked{% endif %}> Activo <i class="input-helper"></i>
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- DELETE CONFIRMATION MODAL -->
+                      <div class="modal fade" id="eliminarUsuarioModal{{ u.id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ u.id }}" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header bg-danger text-white">
+                              <h5 class="modal-title" id="deleteModalLabel{{ u.id }}">Eliminar Usuario</h5>
+                              <button type="button" class="close text-white" data-dismiss="modal" aria-label="Cerrar">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <form action="{% url 'usuarios:eliminar_usuario' u.id %}" method="POST">
+                              {% csrf_token %}
+                              <div class="modal-body text-center py-4">
+                                <i class="mdi mdi-alert-circle-outline text-danger" style="font-size: 50px;"></i>
+                                <h4 class="mt-2 text-dark font-weight-bold">¿Está seguro de eliminar este usuario?</h4>
+                                <p class="text-muted mb-0">Esta acción no se puede deshacer. Se eliminará permanentemente al usuario <strong>{{ u.username }}</strong>.</p>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-danger">Eliminar Definitivamente</button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+
+                    {% empty %}
+                      <tr>
+                        <td colspan="7" class="text-center text-muted">No se encontraron usuarios en el sistema.</td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CREATE MODAL -->
+    <div class="modal fade" id="crearUsuarioModal" tabindex="-1" role="dialog" aria-labelledby="crearModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-success text-white">
+            <h5 class="modal-title" id="crearModalLabel">Agregar Nuevo Usuario</h5>
+            <button type="button" class="close text-white" data-dismiss="modal" aria-label="Cerrar">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="{% url 'usuarios:crear_usuario' %}" method="POST">
+            {% csrf_token %}
+            <div class="modal-body">
+              <div class="form-group">
+                <label class="font-weight-bold">Nombre de Usuario *</label>
+                <input type="text" name="username" class="form-control" placeholder="Ej. jperez" required>
+              </div>
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <label class="font-weight-bold">Nombres</label>
+                  <input type="text" name="first_name" class="form-control" placeholder="Ej. Juan">
+                </div>
+                <div class="col-md-6 form-group">
+                  <label class="font-weight-bold">Apellidos</label>
+                  <input type="text" name="last_name" class="form-control" placeholder="Ej. Pérez">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="font-weight-bold">Correo Electrónico</label>
+                <input type="email" name="email" class="form-control" placeholder="juan.perez@colegio.edu.ec">
+              </div>
+              <div class="form-group">
+                <label class="font-weight-bold">Contraseña *</label>
+                <input type="password" name="password" class="form-control" placeholder="••••••••" required>
+              </div>
+              <div class="form-group row ml-1 mt-3">
+                <div class="form-check mr-4">
+                  <label class="form-check-label">
+                    <input type="checkbox" name="is_staff" class="form-check-input"> Administrador (Staff) <i class="input-helper"></i>
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input type="checkbox" name="is_active" class="form-check-input" checked> Activo <i class="input-helper"></i>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-success">Crear Usuario</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+{% include 'private/footer.html' %}
