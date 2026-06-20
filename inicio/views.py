@@ -14,7 +14,7 @@ def login_vista(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('inicio')
+                return redirect('dashboard:dashboard')
     else:
         form = AuthenticationForm()
     return render(request, 'login.html', {'form': form})
